@@ -39,7 +39,7 @@
 - name: Setting splunk service
   template:
     src: splunk.service
-    dest: /lib/systemd/system/splunk.service
+    dest: /etc/systemd/system/splunk.service
 
 - name: Enable service
   shell: |
