@@ -51,7 +51,7 @@
   service:
     name: splunk.service
     state: restarted
-    enabled: yes
+ 
 
 # set soft link, -b cover the exist links
 # ln -sb src des
