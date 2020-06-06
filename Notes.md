@@ -38,8 +38,8 @@ rpm -ivh splunk-8.0.3-a6754d8441bf-linux-2.6-x86_64.rpm
 vim splunkinstall.sh
 #!/bin/bash
 splunk_dir="/opt"
-splunk_user="splunk_user"
-splunk_password="splunk_password"
+splunk_user="splunk"
+splunk_password="123456"
 [ -f /usr/bin/expect ] || yum -y install expect
 /usr/bin/expect << EOF
 set timeout 200
