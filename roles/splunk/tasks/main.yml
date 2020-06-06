@@ -37,7 +37,7 @@
     bash install.sh
 
 - name: Setting splunk service
-  copy:
+  template:
     src: splunk.service
     dest: /lib/systemd/system/splunk.service
 
