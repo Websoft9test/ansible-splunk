@@ -8,6 +8,7 @@ After=network.target
 
 [Service]
 Type=simple
+Restart=always
 ExecStart=/opt/splunk/bin/splunk _internal_launch_under_systemd
 KillMode=mixed
 KillSignal=SIGINT

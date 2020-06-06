@@ -41,16 +41,12 @@
     src: splunk.service
     dest: /etc/systemd/system/splunk.service
 
-- name: Enable service
+- name: Enable&restart service
   shell: |
     systemctl daemon-reload
     systemctl enable splunk
+    systemctl restart splunk
 
-
-- name: Restart splunk
-  service:
-    name: splunk.service
-    state: restarted
  
 
 # set soft link, -b cover the exist links
