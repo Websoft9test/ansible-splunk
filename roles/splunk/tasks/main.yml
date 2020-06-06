@@ -1,0 +1,98 @@
+# install splunk by OS_family
+- name: Install this role on {{ansible_os_family}}
+  include: "{{ansible_os_family}}.yml"
+
+# configure splunk
+
+- name: Create splunk User
+  user:
+    name: splunk
+    shell: /usr/sbin/nologin
+    home: /data/wwwroot/splunk
+    create_home: no
+
+- name: Create splunk directory
+  file:
+    path: /data/wwwroot/splunk
+    state: directory
+    owner: splunk
+    group: splunk
+    
+- name: Download splunk
+  get_url:
+    dest: /data/wwwroot/splunk
+    url: "{{splunk_download_url}}"
+    owner: splunk
+    group: splunk
+
+- name: Set splunk config
+  template:
+    src: splunk.conf.jinja2
+    dest: /data/wwwroot/splunk/splunk.conf
+    owner: splunk
+    group: splunk
+
+- name: Setting splunk service
+  copy:
+    src: splunk.service
+    dest: /lib/systemd/system/splunk.service
+
+- name: Restart splunk
+  service:
+    name: splunk.service
+    state: restarted
+    enabled: yes
+
+- name: Create splunk System User
+  user:
+      name: splunk 
+      create_home: no 
+      home: /opt/splunk
+      shell: /usr/sbin/nologin
+
+- name: Download splunk
+  unarchive:
+      src: "{{splunk_download_url}}"
+      dest: /opt/ 
+      group: splunk 
+      remote_src: yes
+      owner: splunk
+      mode: g+w
+
+- name: Create the storage directory for files.
+  file:
+      path: /opt/splunk/data
+      state: directory 
+      owner: splunk 
+      group: splunk
+      mode: g+w
+      
+- name: Set database connection /opt/splunk/config/config.json
+  lineinfile:
+    dest: /opt/splunk/config/config.json
+    regexp: '"DataSource":'
+    line: '    "DataSource": "{{splunk_db_user}}:{{splunk_db_password}}@tcp(localhost:3306)/{{splunk_db_name}}?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s",'
+    backrefs: yes 
+
+# set soft link, -b cover the exist links
+# ln -sb src des
+- name: set soft link
+  shell: |
+    ln -sb /opt/splunk  /data/wwwroot/splunk
+    ln -sb /opt/splunk/config /data/config/splunk
+
+# Check version,
+# must use sudo sh -c to solve the no-root permission
+- block:
+  - name: Check splunk Version
+    shell: sudo sh -c "splunkctl status | grep 'splunk version' 1>> /data/logs/install_version.txt"
+
+  - name: Check Erlang Version
+    shell: sudo sh -c 'echo "Erlang $(yum info erlang | grep Version | sed -n 1p)" 1>> /data/logs/install_version.txt'
+    when: ansible_os_family=="RedHat"
+
+# check service state
+- name: Check splunk Service
+  shell: systemctl status splunk | grep Active*
+  register: check_splunk_service
+  notify: check_splunk_service

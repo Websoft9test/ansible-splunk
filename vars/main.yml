@@ -1,11 +1,11 @@
 #全局
 region: "0"
 
-# rabbitmq variable
+# splunk variable
 
-rabbitmq_db_name: rabbitmq
-rabbitmq_db_user: rabbitmq
-rabbitmq_db_password: "123456"
+splunk_db_name: splunk
+splunk_db_user: splunk
+splunk_db_password: "123456"
 
 preend_certbot: True
 nginx_reverse_proxy_port: "8065"
@@ -20,13 +20,13 @@ docker_applications: 'phpmyadmin'
 
 # 生成应用数据库和用户
 mysql_databases:
- - name: rabbitmq
+ - name: splunk
    encoding: utf8
  
 mysql_users:
- - name: rabbitmq
+ - name: splunk
    host: localhost
-   priv: 'rabbitmq.*:ALL'
+   priv: 'splunk.*:ALL'
 
 # 初始化MySQL root密码
 init_db: 
@@ -36,11 +36,11 @@ init_db:
   
 # 应用数据库信息
 init_application:
-  rabbitmq:
-    service: rabbitmq
-    database: rabbitmq 
-    database_user: rabbitmq
+  splunk:
+    service: splunk
+    database: splunk 
+    database_user: splunk
     database_host: localhost
     database_password: "123456"
     config_path:
-      - /opt/rabbitmq/config/config.json
+      - /opt/splunk/config/config.json
