@@ -46,7 +46,7 @@
 
 # Check version
 - block:
-  - name: Check SQLServer Version
+  - name: Check splunk Version
     shell: echo ` cat /opt/splunk/etc/splunk.version` >> /data/logs/install_version.txt
     
 # check service state
