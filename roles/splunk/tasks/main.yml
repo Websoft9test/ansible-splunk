@@ -9,7 +9,7 @@
     name: splunk
     shell: /usr/sbin/nologin
     home:  /opt/splunk
-    create_home: no
+    create_home: yes
 
     
 - name: Run expect to set splunk username and password
