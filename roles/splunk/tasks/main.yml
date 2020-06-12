@@ -25,10 +25,32 @@
     owner: splunk
     group: splunk
 
-- name: Add startup scripts install.sh to Server
-  template:
-    src: install.sh
-    dest: /data/splunk
+#- name: Add startup scripts install.sh to Server
+#  template:
+#    src: install.sh
+#    dest: /data/splunk
+
+- name:
+- name: Run expect to set splunk username and password
+  shell: |
+    set timeout 300
+    spawn {{splunk_dir}}/splunk/bin/splunk start --accept-license
+
+    expect "username:"
+    send "{{splunk_user}}\n"
+
+    expect "password"
+    send "{{splunk_password}}\n"
+
+    expect "password"
+    send "{{splunk_password}}\n"
+    expect eof
+    exit   0
+  args:
+    executable: /usr/bin/expect
+  delegate_to: localhost
+
+
 
 - name: Setup splunk
   shell: |
