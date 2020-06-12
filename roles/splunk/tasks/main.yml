@@ -11,12 +11,6 @@
     home: /data/splunk
     create_home: no
 
-- name: Create splunk directory
-  file:
-    path: /data/splunk
-    state: directory
-    owner: splunk
-    group: splunk
     
 - name: Run expect to set splunk username and password
   shell: |
