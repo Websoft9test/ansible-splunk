@@ -30,7 +30,7 @@
 #    src: install.sh
 #    dest: /data/splunk
 
-- name:
+
 - name: Run expect to set splunk username and password
   shell: |
     set timeout 300
@@ -81,4 +81,5 @@
 - name: Check splunk Service
   shell: systemctl status splunk | grep Active*
   register: check_splunk_service
+
   notify: check_splunk_service
