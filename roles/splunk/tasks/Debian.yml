@@ -1,10 +1,11 @@
+# Install splunk
 
 - name: Download splunk
-  get_url:
-    dest: /data/splunk
-    url: "https://download.splunk.com/products/splunk/releases/{{splunk_download_version}}/linux/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb"
-   
+  shell:
+  args:
+    cmd: wget "https://download.splunk.com/products/splunk/releases/{{splunk_download_version}}/linux/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb"
+    chdir: /opt 
 
 - name: Install splunk
   shell: 
-    dpkg -i /data/splunk/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb
+    dpkg -i /opt/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb
