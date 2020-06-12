@@ -30,6 +30,9 @@
 #    src: install.sh
 #    dest: /data/splunk
 
+- name: Install splunk
+  shell: 
+    rpm -ivh splunk-8.0.3-a6754d8441bf-linux-2.6-x86_64.rpm
 
 - name: Run expect to set splunk username and password
   shell: |
@@ -50,13 +53,6 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
-
-
-- name: Setup splunk
-  shell: |
-    cd /data/splunk
-    rpm -ivh splunk-8.0.3-a6754d8441bf-linux-2.6-x86_64.rpm
-    bash install.sh
 
 - name: Setting splunk service
   template:
