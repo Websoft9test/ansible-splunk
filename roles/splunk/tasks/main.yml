@@ -8,7 +8,8 @@
   user:
     name: splunk
     shell: /usr/sbin/nologin
-
+    home: /opt/splunk/bin/splunk
+    creat_home: no
     
 - name: Run expect to set splunk username and password
   shell: |
