@@ -3,7 +3,15 @@
   include: "{{ansible_os_family}}.yml"
 
 # configure splunk
-    
+
+- name: Change file ownership, group and permissions
+  file:  
+    path: /opt/splunk
+    state: directory
+    owner: splunk
+    group: splunk
+    mode: '0644'
+
 - name: Run expect to set splunk username and password
   shell: |
     set timeout 300
