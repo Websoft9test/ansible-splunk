@@ -1,11 +1,11 @@
-#  Splunk Enterprise Notes
+#  Splunk Enterprise Notes ==test
 
 组件名称：Splunk Enterprise 
 安装文档：https://docs.splunk.com/Documentation/Splunk/8.0.3/Installation/InstallonLinux  
 配置文档: https://docs.splunk.com/Documentation/Splunk/8.0.3/Admin/RunSplunkassystemdservice 
 支持平台：Debian家族 | RHEL家族 | Windows |macOS   
 
-责任人：zxc
+责任人：zeng xiang chuan
 
 ## 概要
 
