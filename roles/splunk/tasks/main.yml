@@ -18,22 +18,6 @@
     owner: splunk
     group: splunk
     
-- name: Download splunk
-  get_url:
-    dest: /data/splunk
-    url: "https://download.splunk.com/products/splunk/releases/{{splunk_download_version}}/linux/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-x86_64.rpm"
-    owner: splunk
-    group: splunk
-
-#- name: Add startup scripts install.sh to Server
-#  template:
-#    src: install.sh
-#    dest: /data/splunk
-
-- name: Install splunk
-  shell: 
-    rpm -ivh /data/splunk/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-x86_64.rpm
-
 - name: Run expect to set splunk username and password
   shell: |
     set timeout 300
@@ -60,19 +44,25 @@
     dest: /etc/systemd/system/splunk.service
 
 - name: Enable&restart service
-  shell: |
-    systemctl daemon-reload
-    systemctl enable splunk
-    systemctl restart splunk
-
+  service:
+    name: splunk.service
+    state: restarted
+    enabled: yes 
+    
  
 
 # set soft link, -b cover the exist links
 # ln -sb src des
 - name: set soft link
   shell: |
-    ln -sb /opt/splunk/bin/splunk  /data/splunk/splunk
+    ln -sf /opt/splunk/bin/splunk  /data/splunk/
+    ln -sf /opt/splunk/etc/system/default  /data/config/
 
+# Check version
+- block:
+  - name: Check SQLServer Version
+    shell: echo ` cat /opt/splunk/etc/splunk.version` >> /data/logs/install_version.txt
+    
 # check service state
 - name: Check splunk Service
   shell: systemctl status splunk | grep Active*
