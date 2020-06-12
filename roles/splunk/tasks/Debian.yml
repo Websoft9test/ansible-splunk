@@ -8,5 +8,5 @@
     chdir: /opt 
 
 
-- name: Delete splunk rpm
-  shell: rm -rf /opt/splunk*.deb
+- name: Delete splunk package_deb
+  shell: rm -rf  /opt/splunk-*.deb

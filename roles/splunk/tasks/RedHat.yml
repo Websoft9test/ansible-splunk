@@ -7,5 +7,5 @@
   args:
     chdir: /opt 
 
-- name: Delete splunk rpm
-  shell: rm -rf splunk*.rpm
+- name: Delete splunk package_rpm
+  shell: rm -rf splunk-*.rpm
