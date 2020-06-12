@@ -4,7 +4,6 @@
   shell: |
     wget "https://download.splunk.com/products/splunk/releases/{{splunk_download_version}}/linux/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb"
     dpkg -i splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb
-    rm -rf  splunk-*.deb
   args:
     chdir: /opt 
 
