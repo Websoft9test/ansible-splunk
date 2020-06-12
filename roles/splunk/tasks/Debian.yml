@@ -8,4 +8,6 @@
 
 - name: Install splunk
   shell: 
-    dpkg -i /opt/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb
+  args:
+    cmd: dpkg -i splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-amd64.deb
+    chdir: /opt

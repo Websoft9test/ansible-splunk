@@ -8,4 +8,6 @@
 
 - name: Install splunk
   shell: 
-    rpm -ivh  /opt/splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-x86_64.rpm
+  args:
+    cmd: rpm -ivh splunk-{{splunk_download_version}}-a6754d8441bf-linux-2.6-x86_64.rpm
+    chdir: /opt
