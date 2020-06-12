@@ -8,6 +8,7 @@
   user:
     name: splunk
     shell: /usr/sbin/nologin
+    home:  /opt/splunk
     create_home: no
 
     
