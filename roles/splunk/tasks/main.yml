@@ -6,9 +6,9 @@
 - name: Run expect to set splunk username and password
   shell: |
     set timeout 200
-    spawn {{splunk_dir}}/splunk/bin/splunk start --accept-license
+    spawn /opt/splunk/bin/splunk start --accept-license
     expect "username:"
-    send "{{splunk_user}}\r"
+    send "admin\r"
     expect "password"
     send "{{splunk_password}}\r"
     expect "password"
