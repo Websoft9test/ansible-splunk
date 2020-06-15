@@ -4,5 +4,5 @@
   yum: 
     name: "{{splunk_download_rpm}}"
     state: present
-  
+    
 

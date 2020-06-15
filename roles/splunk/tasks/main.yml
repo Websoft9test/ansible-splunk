@@ -5,19 +5,17 @@
 # configure splunk
 - name: Run expect to set splunk username and password
   shell: |
-    set timeout 300
+    set timeout 200
     spawn {{splunk_dir}}/splunk/bin/splunk start --accept-license
-
     expect "username:"
-    send "{{splunk_user}}\n"
-
+    send "{{splunk_user}}\r"
     expect "password"
-    send "{{splunk_password}}\n"
-
+    send "{{splunk_password}}\r"
     expect "password"
-    send "{{splunk_password}}\n"
+    send "{{splunk_password}}\r"
+    set timeout 200
     expect eof
-    exit   0
+    exit   
   args:
     executable: /usr/bin/expect
   delegate_to: localhost

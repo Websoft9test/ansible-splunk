@@ -4,7 +4,7 @@ splunk_download_rpm: "https://download.splunk.com/products/splunk/releases/8.0.4
 
 splunk_download_deb: "https://download.splunk.com/products/splunk/releases/8.0.4.1/linux/splunk-8.0.4.1-ab7a85abaa98-linux-2.6-amd64.deb"
 
-
+# splunk_password at least 8
 splunk_dir: "/opt"
 splunk_user: "splunk"
-splunk_password: "123456"
+splunk_password: "12345678"

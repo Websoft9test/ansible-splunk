@@ -1,7 +1,7 @@
 #!/bin/bash
 splunk_dir="/opt"
 splunk_user="splunk"
-splunk_password="123456"
+splunk_password="12345678"
 [ -f /usr/bin/expect ] || yum -y install expect
 /usr/bin/expect << EOF
 set timeout 200
