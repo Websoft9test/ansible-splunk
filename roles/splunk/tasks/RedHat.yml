@@ -2,7 +2,7 @@
 
 - name: Download and Install  splunk
   yum: 
-    name: {{splunk_download_rpm}}
+    name: "{{splunk_download_rpm}}"
     state: present
   
 
