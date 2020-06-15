@@ -20,9 +20,8 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
-
 - name: Copy splunk_service file
-  templates: 
+  template: 
     src: splunk.service
     dest: /lib/systemd/system/splunk.service
 
