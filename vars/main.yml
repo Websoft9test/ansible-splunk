@@ -3,6 +3,9 @@ region: "0"
 
 # splunk variable
 
+preend_certbot: True
+nginx_reverse_proxy_port: "8000"
+
 splunk_user: "splunk"
 splunk_password: "123456"
 
@@ -11,3 +14,4 @@ splunk_password: "123456"
 mysql_databases:
  - name: splunk
    encoding: utf8
+

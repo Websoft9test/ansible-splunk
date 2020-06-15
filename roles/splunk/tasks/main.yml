@@ -22,10 +22,12 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
+- name: Stop splunk service
+  shell: systemctl stop splunk
 
 - name: Enable&restart service
   service:
-    name: splunk.service
+    name: splunk
     state: restarted
     enabled: yes 
     
