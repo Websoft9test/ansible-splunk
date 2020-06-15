@@ -6,12 +6,5 @@ region: "0"
 preend_certbot: True
 nginx_reverse_proxy_port: "8000"
 
-splunk_user: "splunk"
-splunk_password: "123456"
 
-
-# 生成应用数据库和用户
-mysql_databases:
- - name: splunk
-   encoding: utf8
 
