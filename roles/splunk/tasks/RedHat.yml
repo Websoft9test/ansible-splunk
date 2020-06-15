@@ -2,7 +2,7 @@
 
 - name: Download and Install  splunk
   yum: 
-    rpm: {{splunk_download_rpm}}
+    rpm: https://download.splunk.com/products/splunk/releases/8.0.4.1/linux/splunk-8.0.4.1-ab7a85abaa98-linux-2.6-x86_64.rpm
     
   
 
