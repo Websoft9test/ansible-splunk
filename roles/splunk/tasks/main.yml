@@ -3,15 +3,6 @@
   include: "{{ansible_os_family}}.yml"
 
 # configure splunk
-
-- name: Change file ownership, group and permissions
-  file:  
-    path: /opt/splunk
-    state: directory
-    owner: splunk
-    group: splunk
-    mode: '0644'
-
 - name: Run expect to set splunk username and password
   shell: |
     set timeout 300
@@ -31,7 +22,6 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
-
 - name: Setting splunk service
   template:
     src: splunk.service
@@ -43,8 +33,6 @@
     state: restarted
     enabled: yes 
     
- 
-
 # set soft link, -b cover the exist links
 # ln -sb src des
 - name: set soft link
@@ -61,5 +49,4 @@
 - name: Check splunk Service
   shell: systemctl status splunk | grep Active*
   register: check_splunk_service
-
   notify: check_splunk_service
