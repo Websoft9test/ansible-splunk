@@ -20,8 +20,11 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
-- name: Stop splunk service
-  shell: systemctl stop splunk
+
+- name: Copy splunk_service file
+  templates: 
+    src: splunk.service
+    dest: /lib/systemd/system/splunk.service
 
 - name: Enable&restart service
   service:
