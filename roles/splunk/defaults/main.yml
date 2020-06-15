@@ -1,4 +1,10 @@
-splunk_download_version: "8.0.3"
+# download url (need login): https://www.splunk.com/en_us/download/splunk-enterprise.html
+
+splunk_download_rpm: "https://download.splunk.com/products/splunk/releases/8.0.4.1/linux/splunk-8.0.4.1-ab7a85abaa98-linux-2.6-x86_64.rpm"
+
+splunk_download_deb: "https://download.splunk.com/products/splunk/releases/8.0.4.1/linux/splunk-8.0.4.1-ab7a85abaa98-linux-2.6-amd64.deb"
+
+splunk_download_version: "8.0.4.1"
 
 
 splunk_dir: "/opt"
