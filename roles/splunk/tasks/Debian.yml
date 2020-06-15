@@ -3,4 +3,4 @@
 - name: Download and Install  splunk
   apt: 
     deb: {{splunk_download_deb}}
- 
+    state: present
