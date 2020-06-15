@@ -22,10 +22,6 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
-- name: Setting splunk service
-  template:
-    src: splunk.service
-    dest: /etc/systemd/system/splunk.service
 
 - name: Enable&restart service
   service:
@@ -43,7 +39,7 @@
 # Check version
 - block:
   - name: Check splunk Version
-    shell: echo ` cat /opt/splunk/etc/splunk.version` >> /data/logs/install_version.txt
+    shell: sudo sh -c "echo ` cat /opt/splunk/etc/splunk.version` >> /data/logs/install_version.txt"
     
 # check service state
 - name: Check splunk Service
