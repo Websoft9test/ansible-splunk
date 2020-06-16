@@ -1,4 +1,4 @@
-#  Splunk Enterprise Notes --test
+#  Splunk Enterprise Notes 
 
 组件名称：Splunk Enterprise 
 安装文档：https://docs.splunk.com/Documentation/Splunk/8.0.3/Installation/InstallonLinux  
@@ -125,7 +125,7 @@ settings-->Licensing-->Add license
 * 登录地址  http://Your ip:8000
 * 账号密码  启动时自定义
 * 密码修改方案：最好是有命令行修改密码的方案
-  进入web页面更改密码
+ 
 
 ## 服务
 

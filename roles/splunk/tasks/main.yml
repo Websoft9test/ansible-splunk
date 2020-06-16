@@ -20,6 +20,9 @@
     executable: /usr/bin/expect
   delegate_to: localhost
 
+- name: Stop splunk.service
+  shell: /opt/splunk/bin/splunk stop
+
 - name: Copy splunk_service file
   template: 
     src: splunk.service
