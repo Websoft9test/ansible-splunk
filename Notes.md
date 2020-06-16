@@ -1,4 +1,4 @@
-#  Splunk Enterprise Notes 
+#  Splunk Enterprise Notes --test
 
 组件名称：Splunk Enterprise 
 安装文档：https://docs.splunk.com/Documentation/Splunk/8.0.3/Installation/InstallonLinux  
