@@ -124,9 +124,10 @@ settings-->Licensing-->Add license
 
 * 登录地址  http://Your ip:8000
 * 账号密码  启动时自定义
-* 密码修改方案：最好是有命令行修改密码的方案
- 
-
+* 密码修改方案：
+ https://docs.splunk.com/Documentation/Splunk/8.0.4/Security/Changeapassword          #官网改密网址
+ splunk edit user <username> -auth admin:<admin_password> -password  <password>       
+                  
 ## 服务
 
 本项目安装后自动生成：
